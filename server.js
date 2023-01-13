@@ -15,6 +15,13 @@ const users = [
   }
 ];
 
+app.use((req, res, next) => {
+  const middlewareMsg = `Middleware: \n 'Time:', ${Date.now()} \n 'Method:', ${req.method} \n 'URL:', ${req.url} \n 'IP:', ${req.ip} \n`;
+
+  console.log(middlewareMsg);
+  next();
+});
+
 app.get('/', (req, res) => {
   res.send('Home Page');
 });
